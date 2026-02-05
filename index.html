@@ -1,0 +1,185 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Galentine </title>
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Comic Sans MS', cursive;
+  background: linear-gradient(135deg, #ffd6e8, #ffb6d5);
+  color: #d63384;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.page {
+  display: none;
+  height: 100vh;
+  width: 100%;
+  text-align: center;
+  padding-top: 80px;
+}
+
+.page.active {
+  display: block;
+}
+
+.emoji {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+h1 {
+  font-size: 36px;
+  margin-bottom: 30px;
+}
+
+button {
+  border: none;
+  padding: 12px 26px;
+  font-size: 18px;
+  border-radius: 30px;
+  cursor: pointer;
+  margin: 10px;
+}
+
+.yes {
+  background: #ff5fa2;
+  color: white;
+}
+
+.no {
+  background: white;
+  color: #ff5fa2;
+  position: absolute;
+}
+
+/* PAGE 2 */
+.gifts {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.gift {
+  background: white;
+  padding: 15px;
+  border-radius: 20px;
+  cursor: pointer;
+  width: 120px;
+}
+
+.gift img {
+  width: 100%;
+  border-radius: 15px;
+}
+
+/* MODAL */
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 20px;
+  width: 80%;
+  max-width: 350px;
+}
+
+.close {
+  font-size: 24px;
+  cursor: pointer;
+  text-align: right;
+}
+</style>
+</head>
+
+<body>
+
+<!-- PAGE 1 -->
+<div class="page active" id="page1">
+  <div class="emoji"></div>
+  <h1>Will you be<br>my Galentine? </h1>
+
+  <button class="yes" onclick="nextPage()">YES </button>
+  <button class="no" id="noBtn">NO </button>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page" id="page2">
+  <h1>Forever us </h1>
+
+  <div class="gifts">
+    <div class="gift" onclick="openModal('m1')">
+      <img src="pic1.jpg">
+      <p>Memory </p>
+    </div>
+
+    <div class="gift" onclick="openModal('m2')">
+      <img src="pic2.jpg">
+      <p>Smile </p>
+    </div>
+
+    <div class="gift" onclick="openModal('m3')">
+      <img src="pic3.jpg">
+      <p>Love </p>
+    </div>
+  </div>
+</div>
+
+<!-- MODALS -->
+<div class="modal" id="m1">
+  <div class="modal-content">
+    <div class="close" onclick="closeModal('m1')"></div>
+    <img src="pic1.jpg" style="width:100%;border-radius:15px;">
+  </div>
+</div>
+
+<div class="modal" id="m2">
+  <div class="modal-content">
+    <div class="close" onclick="closeModal('m2')"></div>
+    <img src="pic2.jpg" style="width:100%;border-radius:15px;">
+  </div>
+</div>
+
+<div class="modal" id="m3">
+  <div class="modal-content">
+    <div class="close" onclick="closeModal('m3')"></div>
+    <img src="pic3.jpg" style="width:100%;border-radius:15px;">
+  </div>
+</div>
+
+<script>
+const noBtn = document.getElementById("noBtn");
+
+noBtn.addEventListener("mouseover", () => {
+  noBtn.style.left = Math.random() * 250 + "px";
+  noBtn.style.top = Math.random() * 250 + "px";
+});
+
+function nextPage() {
+  document.getElementById("page1").classList.remove("active");
+  document.getElementById("page2").classList.add("active");
+}
+
+function openModal(id) {
+  document.getElementById(id).style.display = "flex";
+}
+
+function closeModal(id) {
+  document.getElementById(id).style.display = "none";
+}
+</script>
+
+</body>
+</html>
